@@ -20,6 +20,12 @@ async function cheackWeather(city) {
   const data = await response.json();
   console.log(data, "data");
 
+  if (data.message == "city not found") {
+    console.log(data.message);
+
+    weather.style.display = "none";
+  }
+
   document.querySelector(".city").innerHTML = data.name;
   document.querySelector(".temp").innerHTML =
     Math.round(data.main.temp) + "&deg";
